@@ -6,6 +6,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 
 /* ROUTE IMPORTS */
+import dashboardRoutes from "./routes/dashboardRoutes";
 
 /* CONFIGURATIONS */
 dotenv.config({ quiet: true });
@@ -18,9 +19,7 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 
 /* ROUTES */
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use("/dashboard", dashboardRoutes);
 /* SERVER SETUP */
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
