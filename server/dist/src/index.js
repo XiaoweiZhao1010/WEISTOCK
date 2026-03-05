@@ -11,6 +11,7 @@ const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 /* ROUTE IMPORTS */
 const dashboardRoutes_1 = __importDefault(require("./routes/dashboardRoutes"));
+const productRoutes_1 = __importDefault(require("./routes/productRoutes"));
 /* CONFIGURATIONS */
 dotenv_1.default.config({ quiet: true });
 const app = (0, express_1.default)();
@@ -22,6 +23,7 @@ app.use(helmet_1.default.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use((0, morgan_1.default)("common"));
 /* ROUTES */
 app.use("/dashboard", dashboardRoutes_1.default);
+app.use("/products", productRoutes_1.default);
 /* SERVER SETUP */
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
