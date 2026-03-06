@@ -64,3 +64,34 @@ export async function createProduct(
     res.status(500).json({ message: "Internal server error" });
   }
 }
+type DeleteProductParams = {
+  productId: string;
+};
+export async function deleteProduct(
+  req: Request<DeleteProductParams>,
+  res: Response,
+): Promise<void> {
+  try {
+    const { productId } = req.params;
+
+    if (!productId) {
+      res.status(400).json({
+        message: "Missing data",
+      });
+      return;
+    }
+
+    await prisma.products.delete({
+      where: { productId },
+    });
+    res.status(204).send();
+  } catch (err) {
+    res.status(404).json({
+      message: "Product not found",
+    });
+    return;
+  }
+  res.status(500).json({
+    message: "Something is wrong. Cannot perform action",
+  });
+}

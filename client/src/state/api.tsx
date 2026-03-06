@@ -5,7 +5,7 @@ export interface Product {
   name: string;
   price: number;
   rating?: number;
-  stockquantity: number;
+  stockQuantity: number;
 }
 export interface NewProduct {
   name: string;
@@ -70,10 +70,18 @@ export const api = createApi({
       }),
       invalidatesTags: ["Products"],
     }),
+    deleteProducts: build.mutation<void, string>({
+      query: (productId) => ({
+        url: `/products/${productId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Products"],
+    }),
   }),
 });
 export const {
   useGetDashboardMetricsQuery,
   useGetProductsQuery,
   useCreateProductsMutation,
+  useDeleteProductsMutation,
 } = api;

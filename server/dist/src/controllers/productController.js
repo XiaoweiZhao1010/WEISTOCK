@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProducts = getProducts;
 exports.createProduct = createProduct;
+exports.deleteProduct = deleteProduct;
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 async function getProducts(req, res) {
@@ -55,5 +56,29 @@ async function createProduct(req, res) {
         console.error(error);
         res.status(500).json({ message: "Internal server error" });
     }
+}
+async function deleteProduct(req, res) {
+    try {
+        const { productId } = req.params;
+        if (!productId) {
+            res.status(400).json({
+                message: "Missing data",
+            });
+            return;
+        }
+        await prisma.products.delete({
+            where: { productId },
+        });
+        res.status(204).send();
+    }
+    catch (err) {
+        res.status(404).json({
+            message: "Product not found",
+        });
+        return;
+    }
+    res.status(500).json({
+        message: "Something is wrong. Cannot perform action",
+    });
 }
 //# sourceMappingURL=productController.js.map
