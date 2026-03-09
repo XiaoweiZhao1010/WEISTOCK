@@ -4,6 +4,7 @@ import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
 import { Menu, Bell, Sun, Settings, Moon } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import Link from "next/link";
+import Image from "next/image";
 const NavBar = () => {
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
@@ -55,7 +56,14 @@ const NavBar = () => {
           </div>
           <hr className="w-0 h-7 border border-solid border-l border-gray-300 mx-3" />
           <div className="flex items-center gap-3 cursor-pointer">
-            <div className="w-9 h-9">Image</div>
+            <div className="w-9 h-9 relative">
+              <Image
+                src="/assets/profile.jpg"
+                alt="A profile picture"
+                className="rounded-full ring-2 ring-blue-300 ring-offset-2 ring-offset-white "
+                fill
+              />
+            </div>
             <span className="font-semibold">Wei</span>
           </div>
         </div>

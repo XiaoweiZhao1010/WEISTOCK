@@ -15,10 +15,10 @@ export async function getProducts(req: Request, res: Response): Promise<void> {
           }
         : {},
     });
-    res.json(products);
+    res.status(200).json(products);
   } catch (err) {
     res.status(500).json({
-      message: "Error retriving products",
+      message: "Error retrieving products",
     });
   }
 }

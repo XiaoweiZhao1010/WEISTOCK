@@ -101,7 +101,10 @@ const CreateProductModal = ({
           className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white"
           initial={{ scale: 0.15, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.15, opacity: 0 }}
+          exit={{
+            opacity: 0,
+            scale: 0.15,
+          }}
           transition={{ duration: 0.45 }}
         >
           <Header title="Create New Product" />

@@ -1,5 +1,6 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
+import Link from "next/link";
 import { setIsSidebarCollapsed } from "@/state";
 import {
   Archive,
@@ -29,14 +30,14 @@ const Sidebar = () => {
       <div
         className={`flex gap-3 justify-center md:justify-normal items-center pt-8 ${isSidebarCollapsed ? "px-5" : "px-8"}`}
       >
-        <div className="flex flex-col">
+        <Link href="/dashboard" className="flex flex-row cursor-pointer gap-3">
           <Warehouse strokeWidth={2.5} />
-        </div>
-        <h1
-          className={`${isSidebarCollapsed ? "hidden" : "block"} font-extrabold text-2xl`}
-        >
-          WEISTOCK
-        </h1>
+          <h2
+            className={`${isSidebarCollapsed ? "hidden" : "block"} font-extrabold text-2xl`}
+          >
+            WEISTOCK
+          </h2>
+        </Link>
 
         <button
           className="md:hidden px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100"
