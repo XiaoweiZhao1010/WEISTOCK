@@ -59,8 +59,8 @@ const CardPurchaseSummary = () => {
           <XAxis dataKey="date" tick={false} axisLine={false} />
           <YAxis tickLine={false} tick={false} axisLine={false} />
           <Tooltip
-            formatter={(value: number | null) =>
-              value !== null ? [`$${value.toLocaleString("en")}`] : ["$0"]
+            formatter={(value) =>
+              value ? [`$${value.toLocaleString("en")}`] : ["$0"]
             }
             labelFormatter={(label) => {
               const date = new Date(label);
