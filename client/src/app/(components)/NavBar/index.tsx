@@ -58,7 +58,7 @@ const NavBar = () => {
           <div className="flex items-center gap-3 cursor-pointer">
             <div className="w-9 h-9 relative">
               <Image
-                src="/assets/profile.jpg"
+                src="https://s3-inventory-managmentnextjs.s3.us-east-2.amazonaws.com/profile.jpg"
                 alt="A profile picture"
                 className="rounded-full ring-2 ring-blue-300 ring-offset-2 ring-offset-white "
                 fill

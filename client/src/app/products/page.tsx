@@ -10,6 +10,7 @@ import { SearchIcon, PlusCircleIcon, DeleteIcon } from "lucide-react";
 import Rating from "@/app/(components)/Rating/Rating";
 import CreateProductModal from "@/app/products/CreateProductModal";
 import ConfirmModal from "@/app/products/ConfirmModal";
+import Image from "next/image";
 
 type ProductFormData = {
   name: string;
@@ -104,7 +105,13 @@ const Page = () => {
                   <DeleteIcon className="w-6 h-6" />
                 </button>
                 <p className=" mt-3 flex flex-row justify-between gap-8">
-                  Logo
+                  <Image
+                    src={`https://s3-inventory-managmentnextjs.s3.us-east-2.amazonaws.com/product${Math.floor(Math.random() * 3) + 1}.png`}
+                    alt={product.name}
+                    width={48}
+                    height={48}
+                    className="rounded w-14 h-14"
+                  />
                 </p>
                 <h3 className="text-black font-bold text-lg">{product.name}</h3>
                 <p className="text-gray-500 text-small">
